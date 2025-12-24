@@ -1,4 +1,5 @@
 import type React from "react"
+import type { Metadata } from "next"
 import { Inter, Instrument_Serif, Syne } from "next/font/google"
 
 import "@workspace/ui/globals.css"
@@ -19,6 +20,30 @@ const fontDisplay = Syne({
   subsets: ["latin"],
   variable: "--font-display",
 })
+
+export const metadata: Metadata = {
+  title: "Component Playground",
+  description: "A personal workshop for handcrafted UI components.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || ""),
+  openGraph: {
+    title: "Component Playground",
+    description: "A personal workshop for handcrafted UI components.",
+    images: [
+      {
+        url: "/preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Component Playground Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Component Playground",
+    description: "A personal workshop for handcrafted UI components.",
+    images: ["/preview.png"],
+  },
+}
 
 export default function RootLayout({
   children,
