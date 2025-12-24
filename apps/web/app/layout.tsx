@@ -28,12 +28,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Component Playground",
     description: "A personal workshop for handcrafted UI components.",
+    siteName: "Component Playground",
     images: [
       {
         url: "/preview.png",
         width: 1200,
         height: 630,
         alt: "Component Playground Preview",
+        type: "image/png",
       },
     ],
   },
