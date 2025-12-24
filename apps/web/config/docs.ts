@@ -20,6 +20,10 @@ export const docsConfig = {
           title: "Flight Status Card",
           href: "/docs/components/flight-status-card",
         },
+        {
+          title: "Spotlight Card",
+          href: "/docs/components/spotlight-card",
+        },
       ],
     },
   ],
