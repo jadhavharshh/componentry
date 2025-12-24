@@ -1,9 +1,5 @@
 import type React from "react"
-import {
-  FlightStatusCard,
-  FlightStatusCardLight,
-  FlightStatusCardAdaptive,
-} from "@workspace/ui/components/flight-status-card"
+import { FlightStatusCardAdaptive } from "@workspace/ui/components/flight-status-card"
 import { InstallCommand } from "@/components/install-command"
 
 export default function FlightStatusCardPage(): React.JSX.Element {
@@ -44,44 +40,14 @@ export default function FlightStatusCardPage(): React.JSX.Element {
 
       <div className="grid md:grid-cols-[120px_1fr] gap-8">
         <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
-          Dark Mode
-        </div>
-        <div className="space-y-6">
-          <div className="p-8 bg-neutral-900 rounded-xl flex items-center justify-center">
-            <FlightStatusCard />
-          </div>
-          <p className="text-xs text-muted-foreground">
-            The default dark theme with glowing green LED-style display and
-            halftone background pattern.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-[120px_1fr] gap-8">
-        <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
-          Light Mode
-        </div>
-        <div className="space-y-6">
-          <div className="p-8 bg-neutral-100 rounded-xl flex items-center justify-center">
-            <FlightStatusCardLight />
-          </div>
-          <p className="text-xs text-muted-foreground">
-            Light theme variant with softer green tones suitable for daytime
-            viewing.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-[120px_1fr] gap-8">
-        <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
-          Adaptive
+          Preview
         </div>
         <div className="space-y-6">
           <div className="p-8 bg-muted/30 rounded-xl flex items-center justify-center">
             <FlightStatusCardAdaptive />
           </div>
           <p className="text-xs text-muted-foreground">
-            Automatically switches between dark and light based on system theme.
+            Automatically adapts to light and dark mode. Toggle the theme to see it in action.
           </p>
         </div>
       </div>
@@ -91,8 +57,8 @@ export default function FlightStatusCardPage(): React.JSX.Element {
           Custom
         </div>
         <div className="space-y-6">
-          <div className="p-8 bg-neutral-900 rounded-xl flex items-center justify-center">
-            <FlightStatusCard
+          <div className="p-8 bg-muted/30 rounded-xl flex items-center justify-center">
+            <FlightStatusCardAdaptive
               departureCode="SFO"
               arrivalCode="LHR"
               departureCity="San Francisco"
@@ -149,23 +115,13 @@ export default function FlightStatusCardPage(): React.JSX.Element {
         </div>
         <div className="space-y-4">
           <pre className="p-6 bg-muted/30 text-sm overflow-x-auto font-mono">
-            {`import { 
-  FlightStatusCard,
-  FlightStatusCardLight,
-  FlightStatusCardAdaptive 
-} from "@workspace/ui/components/flight-status-card"
+            {`import { FlightStatusCardAdaptive } from "components/ui/flight-status-card"
 
-// Dark mode (default)
-<FlightStatusCard />
-
-// Light mode
-<FlightStatusCardLight />
-
-// Auto-switching based on theme
+// Auto-switches between dark and light mode
 <FlightStatusCardAdaptive />
 
 // With custom props
-<FlightStatusCard
+<FlightStatusCardAdaptive
   departureCode="SFO"
   arrivalCode="LHR"
   departureCity="San Francisco"

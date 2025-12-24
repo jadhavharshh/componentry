@@ -1,5 +1,6 @@
 import type React from "react"
 import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const components = [
   { id: "001", title: "Button", href: "/docs/components/button" },
@@ -15,13 +16,16 @@ export default function DocsLayout({
     <div className="min-h-svh flex">
       {/* Sidebar */}
       <aside className="w-64 shrink-0 border-r border-border hidden md:block">
-        <div className="sticky top-0 h-svh overflow-y-auto px-6 py-8">
-          <Link
-            href="/"
-            className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground"
-          >
-            Playground
-          </Link>
+        <div className="sticky top-0 h-svh overflow-y-auto px-6 py-8 flex flex-col">
+          <div className="flex items-center justify-between">
+            <Link
+              href="/"
+              className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground"
+            >
+              Playground
+            </Link>
+            <ThemeToggle />
+          </div>
 
           <nav className="mt-12 space-y-8">
             <div className="space-y-3">
@@ -81,6 +85,7 @@ export default function DocsLayout({
                   {item.id}
                 </Link>
               ))}
+              <ThemeToggle />
             </nav>
           </div>
         </header>
