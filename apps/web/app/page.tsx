@@ -1,4 +1,5 @@
 import type React from "react"
+import Link from "next/link"
 
 export default function Page(): React.JSX.Element {
   return (
@@ -20,6 +21,12 @@ export default function Page(): React.JSX.Element {
           <span className="text-foreground">&gt;</span>
           <span>polish</span>
         </div>
+        <Link
+          href="/docs"
+          className="inline-block text-sm border border-border px-4 py-2 rounded-md hover:bg-accent transition-colors"
+        >
+          Browse Components &rarr;
+        </Link>
       </main>
     </div>
   )
