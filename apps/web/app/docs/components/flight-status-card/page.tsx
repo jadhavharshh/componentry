@@ -4,6 +4,7 @@ import {
   FlightStatusCardLight,
   FlightStatusCardAdaptive,
 } from "@workspace/ui/components/flight-status-card"
+import { InstallCommand } from "@/components/install-command"
 
 export default function FlightStatusCardPage(): React.JSX.Element {
   return (
@@ -28,6 +29,18 @@ export default function FlightStatusCardPage(): React.JSX.Element {
           </p>
         </div>
       </header>
+
+      <div className="grid md:grid-cols-[120px_1fr] gap-8">
+        <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
+          Install
+        </div>
+        <div className="space-y-3">
+          <InstallCommand component="flight-status-card" />
+          <p className="text-xs text-muted-foreground">
+            Requires shadcn CLI. Run <code className="bg-muted px-1 rounded">npx shadcn@latest init</code> first if not set up.
+          </p>
+        </div>
+      </div>
 
       <div className="grid md:grid-cols-[120px_1fr] gap-8">
         <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
