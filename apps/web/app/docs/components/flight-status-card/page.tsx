@@ -50,18 +50,6 @@ export default function FlightStatusCardPage(): React.JSX.Element {
 
       <div className="grid md:grid-cols-[120px_1fr] gap-8">
         <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
-          Install
-        </div>
-        <div className="space-y-3">
-          <InstallCommand component="flight-status-card" />
-          <p className="text-xs text-muted-foreground">
-            Requires shadcn CLI. Run <code className="bg-muted px-1 rounded">npx shadcn@latest init</code> first if not set up.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-[120px_1fr] gap-8">
-        <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
           Preview
         </div>
         <div className="space-y-6">
@@ -103,31 +91,13 @@ export default function FlightStatusCardPage(): React.JSX.Element {
 
       <div className="grid md:grid-cols-[120px_1fr] gap-8">
         <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
-          Features
+          Install
         </div>
-        <div className="space-y-4">
-          <ul className="text-sm text-muted-foreground space-y-2">
-            <li>
-              <strong className="text-foreground">Dot Matrix Display:</strong>{" "}
-              LED-style airport code rendering with individual dot animations
-            </li>
-            <li>
-              <strong className="text-foreground">Halftone Pattern:</strong>{" "}
-              Subtle gradient dot pattern for visual depth
-            </li>
-            <li>
-              <strong className="text-foreground">Progress Tracking:</strong>{" "}
-              Animated progress bar with glowing plane icon
-            </li>
-            <li>
-              <strong className="text-foreground">ETA Panel:</strong> Real-time
-              arrival estimates with timezone and event countdown
-            </li>
-            <li>
-              <strong className="text-foreground">Theme Support:</strong>{" "}
-              Separate dark and light mode variants with adaptive option
-            </li>
-          </ul>
+        <div className="space-y-3">
+          <InstallCommand component="flight-status-card" />
+          <p className="text-xs text-muted-foreground">
+            Requires shadcn CLI. Run <code className="bg-muted px-1 rounded">npx shadcn@latest init</code> first if not set up.
+          </p>
         </div>
       </div>
 
@@ -141,6 +111,46 @@ export default function FlightStatusCardPage(): React.JSX.Element {
             Import and use directly. All props are optional with sensible
             defaults.
           </p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-[120px_1fr] gap-8">
+        <div className="text-xs uppercase tracking-widest text-muted-foreground pt-1">
+          Features
+        </div>
+        <div>
+          <div className="grid grid-cols-1 divide-y border rounded-xl bg-muted/30">
+            <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 p-4">
+              <div className="font-medium text-sm">Dot Matrix Display</div>
+              <div className="text-sm text-muted-foreground">
+                LED-style airport code rendering with individual dot animations
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 p-4">
+              <div className="font-medium text-sm">Halftone Pattern</div>
+              <div className="text-sm text-muted-foreground">
+                Subtle gradient dot pattern for visual depth
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 p-4">
+              <div className="font-medium text-sm">Progress Tracking</div>
+              <div className="text-sm text-muted-foreground">
+                Animated progress bar with glowing plane icon
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 p-4">
+              <div className="font-medium text-sm">ETA Panel</div>
+              <div className="text-sm text-muted-foreground">
+                Real-time arrival estimates with timezone and event countdown
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 p-4">
+              <div className="font-medium text-sm">Theme Support</div>
+              <div className="text-sm text-muted-foreground">
+                Separate dark and light mode variants with adaptive option
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
