@@ -4,6 +4,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { CommandMenu } from "@/components/command-menu"
 import { DocsSidebar } from "@/components/docs-sidebar"
 import { TableOfContents } from "@/components/table-of-contents"
+import { Logomark } from "@/components/logos/logomark"
 
 export default function DocsLayout({
   children,
@@ -18,9 +19,10 @@ export default function DocsLayout({
           <div className="flex items-center gap-6">
             <Link
               href="/"
-              className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground"
+              className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
             >
-              Playground
+              <Logomark className="h-5 w-5" />
+              <span>Componentry</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
               <Link
