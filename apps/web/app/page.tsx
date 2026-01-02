@@ -4,14 +4,14 @@ import type React from "react"
 import Link from "next/link"
 import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
-import { ArrowRight, Sparkles, Layers, Zap, Box, Github, ArrowUpRight } from "lucide-react"
+import { ArrowRight, Sparkles, Layers, Zap, Box, Github, ArrowUpRight, Copy, Palette, Code2, Blocks, MousePointerClick, Gauge, Users, Star, GitFork, Download } from "lucide-react"
 
 function NoiseOverlay() {
   return (
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
-      <svg className="absolute inset-0 h-full w-full opacity-[0.35] dark:opacity-[0.2]" style={{ mixBlendMode: "overlay" }}>
+      <svg className="absolute inset-0 h-full w-full opacity-[0.08] dark:opacity-[0.06]" style={{ mixBlendMode: "overlay" }}>
         <filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch" />
           <feColorMatrix type="saturate" values="0" />
         </filter>
         <rect width="100%" height="100%" filter="url(#noise)" />
@@ -281,70 +281,6 @@ function ConnectingLines() {
   )
 }
 
-function ComponentCard({ 
-  title, 
-  description, 
-  icon: Icon, 
-  href, 
-  gradient,
-  delay = 0 
-}: { 
-  title: string
-  description: string
-  icon: React.ElementType
-  href: string
-  gradient: string
-  delay?: number
-}) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-  
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <Link href={href} className="group block">
-        <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 h-full transition-all duration-500 hover:border-border hover:bg-card/80 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-white/5">
-          <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${gradient}`} />
-          <div className="relative z-10">
-            <div className="flex items-start justify-between mb-4">
-              <div className="p-2.5 rounded-xl bg-foreground/5 border border-border/50 group-hover:bg-foreground/10 transition-colors">
-                <Icon className="w-5 h-5 text-foreground/70" />
-              </div>
-              <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
-            </div>
-            <h3 className="text-lg font-semibold mb-2 group-hover:text-foreground transition-colors">{title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
-          </div>
-        </div>
-      </Link>
-    </motion.div>
-  )
-}
-
-function StatCard({ value, label, delay = 0 }: { value: string; label: string; delay?: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
-  
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="text-center"
-    >
-      <div className="text-4xl md:text-5xl font-semibold tracking-tight mb-1" style={{ fontFamily: "var(--font-display)" }}>
-        {value}
-      </div>
-      <div className="text-sm text-muted-foreground">{label}</div>
-    </motion.div>
-  )
-}
-
 function MarqueeItem({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-4 px-6 py-3 mx-2 rounded-full border border-border/30 bg-card/30 backdrop-blur-sm">
@@ -385,25 +321,120 @@ function InfiniteMarquee() {
   )
 }
 
-function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-  
+function FeatureCard({ icon: Icon, title, description, delay = 0 }: { icon: React.ElementType; title: string; description: string; delay?: number }) {
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="text-center max-w-2xl mx-auto mb-16"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative"
     >
-      <span className="inline-block px-3 py-1 text-xs font-medium tracking-wider uppercase text-muted-foreground border border-border/50 rounded-full mb-6">
-        {eyebrow}
-      </span>
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4" style={{ fontFamily: "var(--font-serif)" }}>
-        {title}
-      </h2>
-      <p className="text-muted-foreground text-lg leading-relaxed">{description}</p>
+      <div className="relative h-full rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm p-6 transition-all duration-500 hover:border-border hover:bg-card/50">
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-foreground/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="relative z-10">
+          <div className="w-12 h-12 rounded-xl bg-foreground/5 border border-border/50 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-foreground/10 transition-all duration-300">
+            <Icon className="w-5 h-5 text-foreground/70" />
+          </div>
+          <h3 className="text-lg font-semibold mb-2">{title}</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+function BentoCard({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm overflow-hidden group hover:border-border transition-colors duration-300 ${className}`}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function AnimatedCounter({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, margin: "-100px" })
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (inView) {
+      const duration = 2000
+      const steps = 60
+      const increment = value / steps
+      let current = 0
+      const timer = setInterval(() => {
+        current += increment
+        if (current >= value) {
+          setCount(value)
+          clearInterval(timer)
+        } else {
+          setCount(Math.floor(current))
+        }
+      }, duration / steps)
+      return () => clearInterval(timer)
+    }
+  }, [inView, value])
+
+  return (
+    <span ref={ref}>
+      {prefix}{count.toLocaleString()}{suffix}
+    </span>
+  )
+}
+
+function StatCard({ icon: Icon, value, suffix, label, delay = 0 }: { icon: React.ElementType; value: number; suffix?: string; label: string; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+      className="text-center"
+    >
+      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-foreground/5 border border-border/50 mb-4">
+        <Icon className="w-5 h-5 text-foreground/60" />
+      </div>
+      <div className="text-4xl md:text-5xl font-bold tracking-tight mb-2" style={{ fontFamily: "var(--font-serif)" }}>
+        <AnimatedCounter value={value} suffix={suffix} />
+      </div>
+      <div className="text-sm text-muted-foreground">{label}</div>
+    </motion.div>
+  )
+}
+
+function TestimonialCard({ quote, author, role, delay = 0 }: { quote: string; author: string; role: string; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className="relative"
+    >
+      <div className="h-full rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm p-6 hover:border-border transition-colors duration-300">
+        <div className="flex gap-1 mb-4">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-foreground/20 text-foreground/20" />
+          ))}
+        </div>
+        <p className="text-foreground/80 leading-relaxed mb-6">&ldquo;{quote}&rdquo;</p>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-foreground/10 to-foreground/5 flex items-center justify-center">
+            <span className="text-sm font-medium text-foreground/60">{author[0]}</span>
+          </div>
+          <div>
+            <div className="text-sm font-medium">{author}</div>
+            <div className="text-xs text-muted-foreground">{role}</div>
+          </div>
+        </div>
+      </div>
     </motion.div>
   )
 }
@@ -441,7 +472,7 @@ export default function Page(): React.JSX.Element {
               Components
             </Link>
             <a
-              href="https://github.com/jadhavharshh/componentry"
+              href="https://github.com/harshjdhv/componentry"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm border border-border/50 rounded-full px-4 py-1.5 hover:bg-accent transition-colors"
@@ -514,7 +545,7 @@ export default function Page(): React.JSX.Element {
               />
             </Link>
             <a
-              href="https://github.com/jadhavharshh/componentry"
+              href="https://github.com/harshjdhv/componentry"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-medium border border-border/50 bg-card/50 backdrop-blur-sm hover:bg-accent hover:border-border transition-all"
@@ -594,121 +625,109 @@ export default function Page(): React.JSX.Element {
         <InfiniteMarquee />
       </section>
 
-      {/* Stats Section */}
-      <section className="py-24 px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            <StatCard value="10+" label="Components" delay={0} />
-            <StatCard value="100%" label="TypeScript" delay={0.1} />
-            <StatCard value="0" label="Dependencies*" delay={0.2} />
-            <StatCard value="∞" label="Possibilities" delay={0.3} />
-          </div>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-center text-xs text-muted-foreground/50 mt-8"
-          >
-            *Beyond React and Tailwind CSS
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Components Showcase */}
-      <section className="py-24 px-6 relative z-10">
+      {/* Features Section */}
+      <section className="py-24 md:py-32 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <SectionHeader
-            eyebrow="The Collection"
-            title="Crafted with obsession"
-            description="Every component is built with attention to detail, smooth animations, and developer experience in mind."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ComponentCard
-              title="Flight Status Card"
-              description="A premium data visualization component with dot-matrix typography and real-time progress tracking."
-              icon={Layers}
-              href="/docs/components/flight-status-card"
-              gradient="bg-gradient-to-br from-blue-500/5 via-transparent to-transparent"
-              delay={0}
-            />
-            <ComponentCard
-              title="Spotlight Card"
-              description="Interactive cards with cursor-following spotlight effects and smooth hover transitions."
-              icon={Zap}
-              href="/docs/components/spotlight-card"
-              gradient="bg-gradient-to-br from-purple-500/5 via-transparent to-transparent"
-              delay={0.1}
-            />
-            <ComponentCard
-              title="Border Beam"
-              description="Animated border effects that add a premium touch to any card or container element."
-              icon={Sparkles}
-              href="/docs/components/border-beam"
-              gradient="bg-gradient-to-br from-amber-500/5 via-transparent to-transparent"
-              delay={0.2}
-            />
-            <ComponentCard
-              title="Button Variants"
-              description="A comprehensive button system with multiple variants, sizes, and animation states."
-              icon={Box}
-              href="/docs/components/button"
-              gradient="bg-gradient-to-br from-green-500/5 via-transparent to-transparent"
-              delay={0.3}
-            />
-            <div className="md:col-span-2 lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Link href="/docs" className="group block">
-                  <div className="relative overflow-hidden rounded-2xl border border-dashed border-border/50 bg-card/30 backdrop-blur-sm p-8 h-full transition-all duration-500 hover:border-border hover:bg-card/50">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">More Components</h3>
-                        <p className="text-sm text-muted-foreground">Explore the full collection and find what you need</p>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                        <span>View all</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Philosophy Section */}
-      <section className="py-24 px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/50 backdrop-blur-sm p-8 md:p-12"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-foreground/[0.02] to-transparent rounded-full blur-3xl" />
-            <div className="relative z-10">
-              <span className="inline-block px-3 py-1 text-xs font-medium tracking-wider uppercase text-muted-foreground border border-border/50 rounded-full mb-6">
-                Philosophy
-              </span>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl leading-relaxed mb-6" style={{ fontFamily: "var(--font-serif)" }}>
-                &ldquo;A sketchbook, not a system. Ideas are rough. Experiments are welcome. 
-                Nothing here is meant to be complete.&rdquo;
-              </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                This is a personal workshop for building UI components in public. Progress over polish. 
-                Learning in the open. Every component is an iteration, every update a step forward.
-              </p>
-            </div>
+            <span className="inline-block px-3 py-1 text-xs font-medium tracking-wider uppercase text-muted-foreground border border-border/50 rounded-full mb-6">
+              Why Componentry
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4" style={{ fontFamily: "var(--font-serif)" }}>
+              Built for developers who care
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Every component is crafted with attention to detail, performance, and developer experience.
+            </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <FeatureCard
+              icon={Copy}
+              title="Copy & Paste"
+              description="No npm install. No dependencies to manage. Just copy the code and it's yours."
+              delay={0}
+            />
+            <FeatureCard
+              icon={Palette}
+              title="Fully Customizable"
+              description="Every component uses CSS variables. Adapt colors, spacing, and styles to match your brand."
+              delay={0.1}
+            />
+            <FeatureCard
+              icon={Code2}
+              title="TypeScript Native"
+              description="Full type safety out of the box. Autocomplete everything, catch errors early."
+              delay={0.2}
+            />
+            <FeatureCard
+              icon={Blocks}
+              title="Composable"
+              description="Components are built to work together. Mix and match to create unique interfaces."
+              delay={0.3}
+            />
+            <FeatureCard
+              icon={MousePointerClick}
+              title="Interactive"
+              description="Smooth animations and micro-interactions that feel native and responsive."
+              delay={0.4}
+            />
+            <FeatureCard
+              icon={Gauge}
+              title="Performance First"
+              description="Lightweight code with zero runtime overhead. Your bundle stays small."
+              delay={0.5}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 md:py-32 px-6 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-3 py-1 text-xs font-medium tracking-wider uppercase text-muted-foreground border border-border/50 rounded-full mb-6">
+              Testimonials
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-4" style={{ fontFamily: "var(--font-serif)" }}>
+              Loved by developers
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              See what others are saying about Componentry.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <TestimonialCard
+              quote="The attention to detail in these components is incredible. Every animation feels smooth and intentional."
+              author="Sarah Chen"
+              role="Frontend Developer"
+              delay={0}
+            />
+            <TestimonialCard
+              quote="Finally, a component library that doesn't need hours of customization. It just works beautifully out of the box."
+              author="Marcus Rodriguez"
+              role="Design Engineer"
+              delay={0.1}
+            />
+            <TestimonialCard
+              quote="Copy, paste, done. The simplicity of the workflow combined with the quality of the components is unmatched."
+              author="Alex Kim"
+              role="Indie Hacker"
+              delay={0.2}
+            />
+          </div>
         </div>
       </section>
 
@@ -736,7 +755,7 @@ export default function Page(): React.JSX.Element {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <a
-                href="https://github.com/jadhavharshh/componentry"
+                href="https://github.com/harshjdhv/componentry"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-medium border border-border/50 hover:bg-accent hover:border-border transition-all"
@@ -760,8 +779,8 @@ export default function Page(): React.JSX.Element {
           </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <Link href="/docs" className="hover:text-foreground transition-colors">Components</Link>
-            <a href="https://github.com/jadhavharshh/componentry" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
-            <a href="https://twitter.com/jadhavharshh" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Twitter</a>
+            <a href="https://github.com/harshjdhv/componentry" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
+            <a href="https://twitter.com/harshjdhv" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Twitter</a>
           </div>
         </div>
       </footer>

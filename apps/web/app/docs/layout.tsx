@@ -37,7 +37,7 @@ export default function DocsLayout({
             <CommandMenu />
             <div className="flex items-center gap-1">
               <a
-                href="https://github.com/jadhavharshh/component-playground"
+                href="https://github.com/harshjdhv/component-playground"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-accent transition-colors"
