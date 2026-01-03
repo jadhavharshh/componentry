@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import { ArrowRight, Sparkles, Layers, Zap, Box, Github, ArrowUpRight, Copy, Palette, Code2, Blocks, MousePointerClick, Gauge, Users, Star, GitFork, Download } from "lucide-react"
+import { Logomark } from "@/components/logos/logomark"
 import Lenis from "lenis"
 
 function useSmoothScroll() {
@@ -483,7 +484,7 @@ export default function Page(): React.JSX.Element {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Box className="w-4 h-4 text-background" />
+              <Logomark className="w-4 h-4 text-background" />
             </div>
             <span className="font-semibold tracking-tight hidden sm:block">Componentry</span>
           </Link>
@@ -796,7 +797,7 @@ export default function Page(): React.JSX.Element {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-foreground flex items-center justify-center">
-              <Box className="w-3 h-3 text-background" />
+              <Logomark className="w-3 h-3 text-background" />
             </div>
             <span className="text-sm text-muted-foreground">Built with obsession by Harsh</span>
           </div>
