@@ -135,7 +135,7 @@ export default function SpotlightCardPage(): React.JSX.Element {
                   </SpotlightCardDescription>
                 </SpotlightCardHeader>
                 <SpotlightCardContent>
-                  <p className="text-neutral-300 text-sm">
+                  <p className="text-neutral-600 dark:text-neutral-300 text-sm">
                     This card features an animated gradient border and a soft
                     spotlight glow that tracks your mouse movement.
                   </p>
@@ -161,7 +161,7 @@ export default function SpotlightCardPage(): React.JSX.Element {
                   </SpotlightCardDescription>
                 </SpotlightCardHeader>
                 <SpotlightCardContent>
-                  <p className="text-neutral-300 text-sm">
+                  <p className="text-neutral-600 dark:text-neutral-300 text-sm">
                     Customize the spotlight color, glow intensity, border radius,
                     and more to match your design system.
                   </p>
@@ -175,8 +175,8 @@ export default function SpotlightCardPage(): React.JSX.Element {
             <h3 className="text-xl font-medium mb-4">Multi Spotlight</h3>
             <div className="p-8 bg-muted/30 rounded-t-xl rounded-b-none border border-border flex items-center justify-center">
               <MultiSpotlightCard className="w-full max-w-lg mx-auto p-6 h-64">
-                <h4 className="text-white font-medium mb-2">Multi Spotlight</h4>
-                <p className="text-neutral-400 text-sm">
+                <h4 className="text-neutral-900 dark:text-white font-medium mb-2">Multi Spotlight</h4>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">
                   Multiple colored spotlight sources follow your cursor
                 </p>
               </MultiSpotlightCard>
@@ -188,8 +188,8 @@ export default function SpotlightCardPage(): React.JSX.Element {
             <h3 className="text-xl font-medium mb-4">Beam Spotlight</h3>
             <div className="p-8 bg-muted/30 rounded-t-xl rounded-b-none border border-border flex items-center justify-center">
               <BeamSpotlightCard className="w-full max-w-lg mx-auto p-6 h-64">
-                <h4 className="text-white font-medium mb-2">Beam Spotlight</h4>
-                <p className="text-neutral-400 text-sm">
+                <h4 className="text-neutral-900 dark:text-white font-medium mb-2">Beam Spotlight</h4>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">
                   Crossing light beams create a dramatic effect
                 </p>
               </BeamSpotlightCard>
@@ -201,8 +201,8 @@ export default function SpotlightCardPage(): React.JSX.Element {
             <h3 className="text-xl font-medium mb-4">Gradient Follow</h3>
             <div className="p-8 bg-muted/30 rounded-t-xl rounded-b-none border border-border flex items-center justify-center">
               <GradientFollowCard className="w-full max-w-lg mx-auto p-6 h-64">
-                <h4 className="text-white font-medium mb-2">Gradient Follow</h4>
-                <p className="text-neutral-400 text-sm">
+                <h4 className="text-neutral-900 dark:text-white font-medium mb-2">Gradient Follow</h4>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">
                   Dynamic gradient background follows cursor position
                 </p>
               </GradientFollowCard>
@@ -214,8 +214,8 @@ export default function SpotlightCardPage(): React.JSX.Element {
             <h3 className="text-xl font-medium mb-4">3D Tilt</h3>
             <div className="p-8 bg-muted/30 rounded-t-xl rounded-b-none border border-border flex items-center justify-center">
               <TiltSpotlightCard className="w-full max-w-lg mx-auto p-6 h-64">
-                <h4 className="text-white font-medium mb-2">3D Tilt</h4>
-                <p className="text-neutral-400 text-sm">
+                <h4 className="text-neutral-900 dark:text-white font-medium mb-2">3D Tilt</h4>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">
                   Perspective tilt with glare effect for depth
                 </p>
               </TiltSpotlightCard>

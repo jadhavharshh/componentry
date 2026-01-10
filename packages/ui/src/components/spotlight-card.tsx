@@ -57,7 +57,8 @@ function SpotlightCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative overflow-hidden bg-gradient-to-b from-neutral-950 to-neutral-900",
+        "relative overflow-hidden bg-gradient-to-b",
+        "from-neutral-50 to-white",
         "dark:from-neutral-950 dark:to-neutral-900",
         "transition-all duration-500",
         className
@@ -169,7 +170,8 @@ function SpotlightCardTitle({
   return (
     <h3
       className={cn(
-        "text-xl font-semibold leading-none tracking-tight text-white",
+        "text-xl font-semibold leading-none tracking-tight",
+        "text-neutral-900 dark:text-white",
         className
       )}
       {...props}
@@ -191,7 +193,7 @@ function SpotlightCardDescription({
 }: SpotlightCardDescriptionProps) {
   return (
     <p
-      className={cn("text-sm text-neutral-400", className)}
+      className={cn("text-sm text-neutral-600 dark:text-neutral-400", className)}
       {...props}
     >
       {children}
@@ -241,8 +243,9 @@ function MultiSpotlightCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        "relative overflow-hidden bg-neutral-950",
-        "border border-neutral-800",
+        "relative overflow-hidden",
+        "bg-white dark:bg-neutral-950",
+        "border border-neutral-200 dark:border-neutral-800",
         "transition-all duration-500",
         className
       )}
@@ -313,8 +316,9 @@ function BeamSpotlightCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        "relative overflow-hidden bg-neutral-950",
-        "border border-neutral-800",
+        "relative overflow-hidden",
+        "bg-white dark:bg-neutral-950",
+        "border border-neutral-200 dark:border-neutral-800",
         "transition-all duration-500",
         className
       )}
@@ -440,7 +444,7 @@ function GradientFollowCard({
 
       {/* Base background */}
       <div
-        className="absolute inset-0 bg-neutral-950/90"
+        className="absolute inset-0 bg-white/90 dark:bg-neutral-950/90"
         style={{ borderRadius: `${borderRadius}px` }}
       />
 
@@ -525,10 +529,11 @@ function TiltSpotlightCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative overflow-hidden bg-neutral-950",
-        "border border-neutral-800",
+        "relative overflow-hidden",
+        "bg-white dark:bg-neutral-950",
+        "border border-neutral-200 dark:border-neutral-800",
         "transition-[border-color] duration-500",
-        isHovered && "border-neutral-700",
+        isHovered && "border-neutral-300 dark:border-neutral-700",
         className
       )}
       style={{
